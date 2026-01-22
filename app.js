@@ -23,9 +23,9 @@ async function connectDB() {
   try {
     await client.connect();
     db = client.db("shop");
-    console.log("✅ MongoDB connected");
+    console.log("MongoDB connected");
   } catch (error) {
-    console.error("❌ MongoDB connection failed", error);
+    console.error("MongoDB connection failed", error);
   }
 }
 
@@ -42,6 +42,14 @@ app.get("/", (req, res) => {
       updateProduct: "PUT /api/products/:id",
       deleteProduct: "DELETE /api/products/:id",
     },
+  });
+});
+
+// ===== VERSION ENDPOINT (Practice Task 12) =====
+app.get("/version", (req, res) => {
+  res.json({
+    version: "1.1",
+    updatedAt: "2026-01-18",
   });
 });
 
