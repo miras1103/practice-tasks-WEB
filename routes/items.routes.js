@@ -1,3 +1,4 @@
+const authMiddleware = require("../middleware/auth");
 const express = require("express");
 const { ObjectId } = require("mongodb");
 
@@ -28,8 +29,8 @@ router.get("/:id", async (req, res) => {
   res.json(item);
 });
 
-// CREATE ITEM
-router.post("/", async (req, res) => {
+// POST ITEM
+router.post("/", authMiddleware, async (req, res) => {
   const db = req.app.locals.db;
   const { name, price } = req.body;
 
@@ -42,7 +43,7 @@ router.post("/", async (req, res) => {
 });
 
 // PUT ITEM
-router.put("/:id", async (req, res) => {
+router.put("/:id", authMiddleware, async (req, res) => {
   const db = req.app.locals.db;
   const { id } = req.params;
 
@@ -54,7 +55,7 @@ router.put("/:id", async (req, res) => {
 });
 
 // PATCH ITEM
-router.patch("/:id", async (req, res) => {
+router.patch("/:id", authMiddleware, async (req, res) => {
   const db = req.app.locals.db;
   const { id } = req.params;
 
@@ -66,7 +67,7 @@ router.patch("/:id", async (req, res) => {
 });
 
 // DELETE ITEM
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", authMiddleware, async (req, res) => {
   const db = req.app.locals.db;
   const { id } = req.params;
 
