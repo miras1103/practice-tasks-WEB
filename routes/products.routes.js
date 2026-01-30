@@ -38,7 +38,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// CREATE PRODUCT
+// POST PRODUCT
 router.post("/", async (req, res) => {
   const db = req.app.locals.db;
   const { name, price, category } = req.body;
@@ -59,7 +59,7 @@ router.post("/", async (req, res) => {
   });
 });
 
-// UPDATE PRODUCT
+// PUT PRODUCT
 router.put("/:id", async (req, res) => {
   const db = req.app.locals.db;
   const { id } = req.params;
